@@ -1,0 +1,14 @@
+{
+  "name": "librarymanagment-server",
+  "version": "1.0.0",
+  "description": "Library server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ShubhamPanchal",
+  "license": "ISC",
+  "dependencies": {
+    "multer": "^2.0.2"
+  }
+}
