@@ -29,7 +29,7 @@ backend/
  ├── routes/             # API routes
  │    |-- Routes.js
  ├── controllers/        # Controllers (business logic)
- │    ├── authController.js
+ │    ├── userController.js
  │    ├── bookController.js
  │    ├── reservationController.js
  │    └── borrowController.js
@@ -46,8 +46,7 @@ backend/
 ### 1. Clone Repository
 
 ```bash
-git clone <repo-url>
-cd backend
+git clone https://github.com/Shubhampanchal108/UIET-LIBRARY-SERVER.git
 ```
 
 ### 2. Install Dependencies
@@ -88,28 +87,34 @@ Server will run on: `http://localhost:5000`
 
 ### 🔹 student
 
-* `POST /api/auth/register` → Register (student, librarian, admin)
-* `POST /api/auth/login` → Login + get JWT
+* `POST /api/main/ALLstudents` → Students List (student, librarian, admin)
+* `POST /api/main/LoginStudent` → Login + get JWT
+* `POST /api/main/SignUpStudent` → SignUp
+* `POST /api/main/LoginStudent` → Login + get JWT
+* `GET /api/main/StudentProfile/:RollNo` → for searching student profile
 
 ### 🔹 Books
 
-* `GET /api/books?search=keyword` → Search books
-* `POST /api/books` (librarian only) → Add new book
-* `PATCH /api/books/:id` (librarian only) → Update book info
-* `DELETE /api/books/:id` (librarian only) → Delete book
+* `GET /api/main/ALLbooks` → ALL books
+* `POST /api/main/AddBook` (librarian only) → Add new book
+* `PATCH /api/main/UpdateBook/:id` (librarian only) → Update book info
+* `DELETE /api/main/DeleteBook/:id` (librarian only) → Delete book
+* `DELETE /api/main//BookDetails/:id` -> Searching Book
 
 ### 🔹 Reservation
 
-* `POST /api/reservations/:bookId` (student) → Reserve book
-* `GET /api/reservations` (student → own, librarian → all)
-* `PATCH /api/reservations/:id/approve` (librarian) → Approve reservation (2-day validity)
-* `PATCH /api/reservations/:id/reject` (librarian) → Reject reservation
+* `POST /api/main/ReserveBook/:id` (student) → Reserve book
+* `GET /api/main//ALLreservations` (librarian Only)
+* `GET /api/main/main/StudentReservations/:userId` (student → own)
+* `PATCH /api/main/approveReservation/:id` (librarian) → Approve reservation (2-day validity)
+* `PATCH /api/main/rejectReservation/:id` (librarian) → Reject reservation
 
 ### 🔹 Borrow (Issue/Return)
 
-* `POST /api/borrow/:reservationId` (librarian) → Issue book
-* `PATCH /api/borrow/:id/return` (librarian) → Mark book returned
-* `GET /api/borrow` (student → own books, librarian → all)
+* `POST /api//BorrowBook/:id` (librarian) → Issue book
+* `PATCH /api/main/ReturnBook/:id` (librarian) → Mark book returned
+* `GET /api/main/ALLborrows` (All Borrow Books)
+* `GET /api/main/StudentBorrows/:userId` (Student Own)
 
 ---
 
@@ -162,5 +167,3 @@ fetch("http://localhost:5000/api/reservations/BOOK_ID", {
 * Fine management system
 * Email/SMS notifications
 * Analytics dashboard
-
-Chal bhai bata, tujhe is README me **API request examples (Postman style JSON payloads)** bhi daal du taaki aur clear ho frontend waalo ko?

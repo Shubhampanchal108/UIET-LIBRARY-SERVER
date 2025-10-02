@@ -41,8 +41,8 @@ Router.patch("/UpdateBook/:id");
 Router.post("/ReserveBook/:id", reserveBook);
 Router.get("/ALLreservations", showAllReservation);
 Router.get("/StudentReservations/:userId", showStudentReservation);
-Router.patch("/UpdateReservationStatus/:id/approve", ApproveReservation);
-Router.patch("/UpdateReservationStatus/:id/reject", rejectReservation);
+Router.patch("/approveReservation/:id", ApproveReservation);
+Router.patch("/rejectReservation/:id", rejectReservation);
 
 // Borrow Routes
 Router.post("/BorrowBook/:id", borrowBook);
