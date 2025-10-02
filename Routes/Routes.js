@@ -1,34 +1,54 @@
-const express = require('express');
+const express = require("express");
 const Router = express.Router();
 
-// Student Routes
-Router.get('/ALLstudents');
-Router.post('/LoginStudent');
-Router.post('/SignUpStudent');
-Router.get('/StudentProfile/:name');
+const {
+  getAllUsers,
+  signupController,
+  getUserProfile,
+} = require("../Controllers/userControllers");
 
+const { getAllBooks, addBook } = require("../Controllers/BooksControllers");
+
+const {
+  reserveBook,
+  showAllReservation,
+  showStudentReservation,
+  ApproveReservation,
+  rejectReservation,
+} = require("../Controllers/ReservationControllers");
+
+const {
+  borrowBook,
+  showAllBorrows,
+  showStudentBorrows,
+  returnBook,
+} = require("../Controllers/BorrowControllers");
+
+// Student Routes
+Router.get("/ALLstudents", getAllUsers);
+Router.post("/LoginStudent");
+Router.post("/SignUpStudent", signupController);
+Router.get("/StudentProfile/:RollNo", getUserProfile);
 
 // Books Routes
-Router.get('/ALLbooks');
-Router.post('/AddBook');
-Router.get('/BookDetails/:id');
-Router.delete('/DeleteBook/:id');
-Router.put('/UpdateBook/:id');
+Router.get("/ALLbooks", getAllBooks);
+Router.post("/AddBook", addBook);
+Router.get("/BookDetails/:id");
+Router.delete("/DeleteBook/:id");
+Router.patch("/UpdateBook/:id");
 
 // Reservation Routes
-Router.post('/ReserveBook/:id');
-Router.get('/ALLreservations');
-Router.get('/StudentReservations/:userId');
-Router.patch('/UpdateReservationStatus/:id/approve');
-Router.patch('/UpdateReservationStatus/:id/reject');
+Router.post("/ReserveBook/:id", reserveBook);
+Router.get("/ALLreservations", showAllReservation);
+Router.get("/StudentReservations/:userId", showStudentReservation);
+Router.patch("/UpdateReservationStatus/:id/approve", ApproveReservation);
+Router.patch("/UpdateReservationStatus/:id/reject", rejectReservation);
 
 // Borrow Routes
-Router.post('/BorrowBook/:id');
-Router.get('/ALLborrows');
-Router.get('/StudentBorrows/:userId');
-Router.patch('/ReturnBook/:id');
-
-
+Router.post("/BorrowBook/:id", borrowBook);
+Router.get("/ALLborrows", showAllBorrows);
+Router.get("/StudentBorrows/:userId", showStudentBorrows);
+Router.patch("/ReturnBook/:id", returnBook);
 
 //Export the Router
 module.exports = Router;

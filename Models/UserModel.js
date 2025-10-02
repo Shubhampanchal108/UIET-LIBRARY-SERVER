@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  _id: ObjectId,
   name: {
     type: String,
     required: true,
@@ -25,15 +24,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  Branch: {
+  branch: {
     type: String,
     required: true,
   },
-    Year: {
-    type: Number,
+    year: {
+    type: String,
     required: true,
   },
-  Mobile: {
+  mobile: {
     type: String,
     required: true,
     unique: true,

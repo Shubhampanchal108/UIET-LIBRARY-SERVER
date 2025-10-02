@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
-    _id: ObjectId,
     title: {
         type: String,
         required: true,
@@ -10,11 +9,12 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    category: {
-        type: String,
+    forWhichYear: {
+        type: Number,
+        enum: [1, 2, 3, 4],
         required: true,
     },
-    TotalCopy: {
+    totalCopy: {
         type: Number,
         required: true,
     },

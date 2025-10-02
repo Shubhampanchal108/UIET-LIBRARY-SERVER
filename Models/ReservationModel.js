@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const reservationSchema = new mongoose.Schema({
-    _id: ObjectId,
-    userId: { type: ObjectId, ref: 'User', required: true },
-    bookId: { type: ObjectId, ref: 'Book', required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    bookId: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true },
     status: { type: String, enum: ['approved', 'pending', 'rejected', 'expired'], default: 'pending' },
     reservationDate: { type: Date, default: Date.now },
     validTill: { type: Date, required: true },
