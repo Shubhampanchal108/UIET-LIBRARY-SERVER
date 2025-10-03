@@ -40,7 +40,43 @@ const addBook = async (req, res) => {
   }
 };
 
+//fetching book details
+const bookDetails=async(req,res)=>{
+    try{
+        const books = await booksModel.find().populate( 'userId');
+          return res.send(books);
+    }
+ catch (error) {
+    res.status(500).send({ message: 'Failed to fetch books', error });
+  }
+}
+
+// Delete a book
+const deleteBook= async (req, res) => {
+  try {
+    const deletedBook = await booksModel.findByIdAndDelete(req.params.id);
+    if (!deletedBook) return res.status(404).send({ message: 'Book not found' });
+    res.send({ message: 'Book deleted successfully', book: deletedBook });
+  } catch (error) {
+    res.status(500).send({ message: 'Failed to delete book', error });
+  }
+};
+
+//for updating a book
+const updateBook= async (req, res) => {
+  try {
+    const updatedBook = await booksModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedBook) return res.status(404).send({ message: 'Book not found' });
+    res.send({ message: 'Book updated successfully', book: updatedBook });
+  } catch (error) {
+    res.status(500).send({ message: 'Failed to update book', error });
+  }
+};
+
 module.exports = {
   getAllBooks,
-  addBook
+  addBook,
+  bookDetails,
+  deleteBook,
+  updateBook,
 };
