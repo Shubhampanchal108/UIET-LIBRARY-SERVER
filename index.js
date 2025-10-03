@@ -4,6 +4,16 @@ const app = express();
 const DB_Connection = require('./Configs/Database');
 const AppRouter = require('./Routes/Routes');
 const reservationExpiryScheduler = require('./utils/reservationExpiryScheduler');
+const cors = require('cors');
+
+// CORS configuration
+app.use(cors(
+  {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }
+));
 
 const PORT = process.env.PORT || 8000;
 
