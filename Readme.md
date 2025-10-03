@@ -92,6 +92,10 @@ Server will run on: `http://localhost:5000`
 * `POST /api/main/SignUpStudent` → SignUp
 * `POST /api/main/LoginStudent` → Login + get JWT
 * `GET /api/main/StudentProfile/:RollNo` → for searching student profile
+* `GET /api/main//RequestBook` → Request for new books
+* `GET /api/main/ALLrequestedBooks` → All Request for new books
+* `GET /api/main//loginAdmin` → Admin Login
+* `GET /api/main/appointAdmin` →Set New Admin
 
 ### 🔹 Books
 
