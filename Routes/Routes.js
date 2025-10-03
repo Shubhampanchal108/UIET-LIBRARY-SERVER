@@ -39,7 +39,7 @@ Router.get("/StudentProfile/:RollNo", authenticateToken, getUserProfile);
 Router.post("/RequestBook", authenticateToken, requestBook);
 Router.get("/ALLrequestedBooks", authenticateToken, showAllRequestedBooks);
 Router.post('/loginAdmin', AdminLoginController);
-Router.post('/appointAdmin', authenticateToken, appointAdmin);
+Router.patch('/appointAdmin', authenticateToken, appointAdmin);
 
 // Books Routes
 Router.get("/ALLbooks", authenticateToken, getAllBooks);
