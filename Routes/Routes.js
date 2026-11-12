@@ -14,7 +14,7 @@ const {
   appointAdmin
 } = require("../Controllers/userControllers");
 
-const { getAllBooks, addBook } = require("../Controllers/BooksControllers");
+const { getAllBooks, addBook, bookDetails, deleteBook, updateBook } = require("../Controllers/BooksControllers");
 
 const {
   reserveBook,
@@ -44,9 +44,9 @@ Router.patch('/appointAdmin', authenticateToken, appointAdmin);
 // Books Routes
 Router.get("/ALLbooks", authenticateToken, getAllBooks);
 Router.post("/AddBook", authenticateToken, addBook);
-Router.get("/BookDetails/:id", authenticateToken);
-Router.delete("/DeleteBook/:id", authenticateToken);
-Router.patch("/UpdateBook/:id", authenticateToken);
+Router.get("/BookDetails/:id", authenticateToken,bookDetails);
+Router.delete("/DeleteBook/:id", authenticateToken,deleteBook);
+Router.patch("/UpdateBook/:id", authenticateToken,updateBook);
 
 // Reservation Routes
 Router.post("/ReserveBook/:id", authenticateToken, reserveBook);
